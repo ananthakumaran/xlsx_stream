@@ -28,8 +28,8 @@ defmodule XlsxStream.Mixfile do
 
   defp deps do
     [
-      {:xml_stream, "~> 0.1"},
-      {:zstream, "~> 0.1"},
+      {:xml_stream, "~> 0.2"},
+      {:zstream, "~> 0.2"},
       {:temp, "~> 0.4", only: :test},
       {:ex_doc, "~> 0.18", only: :dev}
     ]

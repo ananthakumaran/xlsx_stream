@@ -139,7 +139,7 @@ defmodule XlsxStreamTest do
     path = Temp.path!(%{suffix: ".xlsx"})
 
     assert !File.exists?(path)
-    XlsxStream.stream(files)
+    XlsxStream.stream!(files)
     |> Stream.into(File.stream!(path))
     |> Stream.run
     assert File.exists?(path)

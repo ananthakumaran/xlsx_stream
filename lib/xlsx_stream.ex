@@ -1,15 +1,15 @@
 defmodule XlsxStream do
   def file(document, name, options \\ []) do
     doc_options = [
-      printer: XmlStream.Print.Ugly
+      printer: XmlStream.Printer.Ugly
     ]
-    stream = XmlStream.stream(document, doc_options)
+    stream = XmlStream.stream!(document, doc_options)
     |> buffer_stream(Keyword.get(options, :buffer, 16 * 1024))
     Zstream.entry(name, stream)
   end
 
-  def stream(files) do
-    Zstream.create(files)
+  def stream!(files) do
+    Zstream.zip(files)
   end
 
   defp buffer_stream(stream, buffer_size) do
