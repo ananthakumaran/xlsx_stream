@@ -24,3 +24,14 @@ zip file containing a number of XML files. This library utilizes
 [xml_stream](https://github.com/activesphere/xml_stream) and
 [zstream](https://github.com/ananthakumaran/zstream) to create XML
 files and zip them as a stream. Check the test file for full example.
+
+## Resources to learn xlsx file specification
+
+*
+  [SpreadsheetML](http://officeopenxml.com/anatomyofOOXML-xlsx.php)
+  provides a highlevel overview of the xlsx file.
+
+* simple tutorial to build a spreadsheet
+  [part 1](https://blogs.msdn.microsoft.com/brian_jones/2006/11/02/simple-spreadsheetml-file-part-1-of-3/)
+  [part 2](https://blogs.msdn.microsoft.com/brian_jones/2006/11/15/simple-spreadsheetml-file-part-2-of-3/)
+  [part 3](https://blogs.msdn.microsoft.com/brian_jones/2007/05/29/simple-spreadsheetml-file-part-3-formatting/)
