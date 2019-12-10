@@ -1,6 +1,7 @@
 defmodule XlsxStream.Worksheet do
   alias XmlStream, as: X
   alias XlsxStream.Schema
+  alias XlsxStream.Utils
 
   def document(body) do
     [
@@ -47,6 +48,14 @@ defmodule XlsxStream.Worksheet do
 
   def v(body, attrs \\ %{}) do
     X.element("v", attrs, body)
+  end
+
+  def merge_cells(body, attrs \\ %{}) do
+    Utils.counted("mergeCells", body, attrs)
+  end
+
+  def merge_cell(attrs) do
+    X.empty_element("mergeCell", attrs)
   end
 
   def page_setup_pr(attrs), do: X.empty_element("pageSetUpPr", attrs)

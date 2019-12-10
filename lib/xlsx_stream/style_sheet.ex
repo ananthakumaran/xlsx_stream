@@ -1,6 +1,7 @@
 defmodule XlsxStream.StyleSheet do
   alias XmlStream, as: X
   alias XlsxStream.Schema
+  alias XlsxStream.Utils
 
   def document(styles) do
     [
@@ -109,11 +110,17 @@ defmodule XlsxStream.StyleSheet do
     X.empty_element("patternFill", attrs)
   end
 
+  def pattern_fill(body, attrs) do
+    X.element("patternFill", attrs, body)
+  end
+
+  def fg_color(attrs) do
+    X.empty_element("fgColor", attrs)
+  end
+
   def alignment(attrs) do
     X.empty_element("alignment", attrs)
   end
 
-  def counted(name, body \\ [], attrs \\ %{}) do
-    X.element(name, Map.merge(%{count: to_string(length(body))}, attrs), body)
-  end
+  defdelegate counted(name, body \\ [], attrs \\ %{}), to: Utils
 end
