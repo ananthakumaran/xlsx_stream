@@ -65,7 +65,8 @@ defmodule XlsxStreamTest do
       ]),
       S.fills([
         S.fill([S.pattern_fill(%{patternType: "none"})]),
-        S.fill([S.pattern_fill(%{patternType: "gray125"})])
+        S.fill([S.pattern_fill(%{patternType: "gray125"})]),
+        S.fill([S.pattern_fill([S.fg_color(%{rgb: "FFFFFF00"})], %{patternType: "solid"})])
       ]),
       S.borders([
         S.border([]),
@@ -120,7 +121,8 @@ defmodule XlsxStreamTest do
       W.print_options(%{verticalCentered: "0", horizontalCentered: "0", headings: "0", gridLines: "0"}),
       W.page_margins(%{right: "0.75", left: "0.75", bottom: "1.0", top: "1.0", footer: "0.5", header: "0.5"}),
       W.page_setup(%{}),
-      W.header_footer(%{})
+      W.header_footer(%{}),
+      W.merge_cells([W.merge_cell(%{ref: "A1:A2"})])
     ])
 
     files = [
