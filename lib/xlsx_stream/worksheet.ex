@@ -7,7 +7,11 @@ defmodule XlsxStream.Worksheet do
       X.declaration(),
       X.element(
         "worksheet",
-        %{xmlns: Schema.spreedsheetml(), "xmlns:r": Schema.relationships(), "xml:space": "preserve"},
+        %{
+          xmlns: Schema.spreedsheetml(),
+          "xmlns:r": Schema.relationships(),
+          "xml:space": "preserve"
+        },
         body
       )
     ]
@@ -64,13 +68,14 @@ defmodule XlsxStream.Worksheet do
   def cells(row, row_identifier, mapper) do
     Enum.map_reduce(row, [65], fn cell, count ->
       {attrs, body} = mapper.(cell)
-      {c(body, Map.merge(attrs, %{r: row_identifier <> alphabet_to_string(count)})), next_alphabet(count)}
+
+      {c(body, Map.merge(attrs, %{r: row_identifier <> alphabet_to_string(count)})),
+       next_alphabet(count)}
     end)
     |> elem(0)
   end
 
-
-  def next_alphabet([x | rest]) when x >= 65 and x < 90, do: [ x + 1 | rest]
+  def next_alphabet([x | rest]) when x >= 65 and x < 90, do: [x + 1 | rest]
   def next_alphabet([]), do: [65]
   def next_alphabet([x | rest]) when x == 90, do: [65 | next_alphabet(rest)]
 

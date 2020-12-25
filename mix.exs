@@ -8,7 +8,7 @@ defmodule XlsxStream.Mixfile do
       app: :xlsx_stream,
       version: @version,
       elixir: "~> 1.4",
-      start_permanent: Mix.env == :prod,
+      start_permanent: Mix.env() == :prod,
       description: "Streaming XLSX builder",
       package: package(),
       docs: docs(),
@@ -36,15 +36,19 @@ defmodule XlsxStream.Mixfile do
   end
 
   defp package do
-    %{licenses: ["MIT"],
+    %{
+      licenses: ["MIT"],
       links: %{"Github" => "https://github.com/ananthakumaran/xlsx_stream"},
-      maintainers: ["ananthakumaran@gmail.com"]}
+      maintainers: ["ananthakumaran@gmail.com"]
+    }
   end
 
   defp docs do
-    [source_url: "https://github.com/ananthakumaran/xlsx_stream",
-     source_ref: "v#{@version}",
-     main: XmlStream,
-     extras: ["README.md"]]
+    [
+      source_url: "https://github.com/ananthakumaran/xlsx_stream",
+      source_ref: "v#{@version}",
+      main: XmlStream,
+      extras: ["README.md"]
+    ]
   end
 end
