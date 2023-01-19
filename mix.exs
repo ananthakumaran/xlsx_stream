@@ -1,13 +1,13 @@
 defmodule XlsxStream.Mixfile do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.2.1"
 
   def project do
     [
       app: :xlsx_stream,
       version: @version,
-      elixir: "~> 1.4",
+      elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       description: "Streaming XLSX builder",
       package: package(),
@@ -31,7 +31,7 @@ defmodule XlsxStream.Mixfile do
       {:xml_stream, "~> 0.2"},
       {:zstream, "~> 0.2"},
       {:temp, "~> 0.4", only: :test},
-      {:ex_doc, "~> 0.18", only: :dev}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
