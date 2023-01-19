@@ -3,7 +3,7 @@ on:
   - pull_request
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
     strategy:
       fail-fast: false
@@ -16,9 +16,9 @@ jobs:
           - elixir: 1.10.4
             otp: 23.0
           - elixir: 1.13.0
-            otp: 24.1
+            otp: 24.3
           - elixir: 1.14.0
-            otp: 25.0
+            otp: 25.1
             check_warnings: true
             check_format: true
     steps:
